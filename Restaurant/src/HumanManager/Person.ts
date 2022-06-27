@@ -1,4 +1,7 @@
-import { Gender } from "./Gender";
+export enum Gender{
+  MALE,
+  FEMALE,
+}
 /**
  * Any person in the staff and customer in restaurant
  */
@@ -6,6 +9,7 @@ import { Gender } from "./Gender";
     protected phone?: number;
   
     constructor(
+      protected id:number,
       protected name: string,
       protected age: number,
       protected gender: Gender
