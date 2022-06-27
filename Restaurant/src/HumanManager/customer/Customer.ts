@@ -4,10 +4,11 @@ import {Order} from "../../OrderManager/order/Order";
 export class Customer extends Person {
     orderItem: Order[];
     constructor(
+        id:number,
         name: string,
         age: number,
         gender: Gender
       ) {
-        super(name, age, gender)
+        super(id,name, age, gender)
     }
 }
