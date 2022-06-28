@@ -172,4 +172,4 @@ restuarant.menu.normal.addFood(applePie, BananaDessertRecipe, friedRice, koko, k
 restuarant.menu.vip.addDrink(whiskeyLate, vanLantos, jinroJuko, cocaTranditional, orangeJucy);
 restuarant.menu.vip.addFood(appleGold, caca, loklak, vonto, horacy);
 
-console.log(restuarant.menu.vip);
+console.log(restuarant.menu.vip.getSoftDrink());

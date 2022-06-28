@@ -8,4 +8,7 @@ export class Drink extends MenuItem {
    constructor(protected category: Category, name: string, description: string, private volume: number, price: number) {
       super(name, description, price);
    }
+   getCategory(): Category {
+      return this.category;
+   }
 }

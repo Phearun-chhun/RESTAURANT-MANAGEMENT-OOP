@@ -1,5 +1,8 @@
+import { Acohol } from "./drink/acohol/Acohol";
 import { Drink } from "./drink/Drink";
+import { SoftDrink } from "./drink/softDrink/SoftDrink";
 import { Dessert } from "./meal/desert/Desert";
+import { GeneralDish } from "./meal/generalDish/GeneralDish";
 import { Meal } from "./meal/Meal"
 import { Category } from "./menu/MenuItem";
 
@@ -29,5 +32,35 @@ export class MenuCategory {
             }
         });
         return desserts;
+    }
+
+    getDish(): GeneralDish[]{
+        let dishes: GeneralDish[] = [];
+        this.foods.forEach(food => {
+            if(food.getCategory()==Category.DISH){
+                dishes.push(food);
+            }
+        });
+        return dishes;
+    }
+
+    getAcohol(): Acohol[]{
+        let acohols: Acohol[] = [];
+        this.drinks.forEach(drink => {
+            if(drink.getCategory()==Category.ACOHOLDRINK){
+                acohols.push(drink);
+            }
+        });
+        return acohols;
+    }
+
+    getSoftDrink(): SoftDrink[]{
+        let softDrinks: SoftDrink[] = [];
+        this.drinks.forEach(drink => {
+            if(drink.getCategory()==Category.SOFTDRINK){
+                softDrinks.push(drink);
+            }
+        });
+        return softDrinks;
     }
 }
