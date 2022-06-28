@@ -3,7 +3,8 @@ import { Chair } from "./Chair";
 
 export class Table {
     private chairs:Chair[]=[];
-    constructor( number: number, protected description: string, protected chairNumber: number){}
+    public isTableFree: boolean = true;
+    constructor(protected id: number, protected chairNumber: number){}
    getNumberOfChairs(){
     return this.chairs.length;
    }
@@ -13,12 +14,9 @@ export class Table {
    addChair(chair:Chair){
     return this.chairs.push(chair)
    }
-   getFreeChair():Chair|undefined{
-        for(let chair of this.chairs){
-            if(!chair.hasCustomer()){
-                return chair;
-            }
-        }
-        return undefined; 
+
+   getTableId(): number{
+    return this.id;
    }
+
 }

@@ -1,10 +1,26 @@
+import { Customer } from "../HumanManager/customer/Customer";
 import { Order } from "./order/Order";
+import { Table } from "./table/Table";
 
-export class OrderManager{
-    public order: Order[]=[];
-    getOrder(){
-        
+export class OrderManager {
+    private orders: Order[] = [];
+
+    getOrders() {
+        return this.orders;
+    }
+    customerOrder(customer:Customer){
+        let isHave = false;
+        for(let order of this.orders){
+           console.log(order.getCustomer());
+           if(order.getCustomer().isEqual(customer)){
+                isHave = true;
+           }
+        }
+        return isHave;
+    }
+    addOrder(order: Order) {
+        if(!(this.customerOrder(order.getCustomer()))){
+            this.orders.push(order)   
+        }
     }
 }
-
-

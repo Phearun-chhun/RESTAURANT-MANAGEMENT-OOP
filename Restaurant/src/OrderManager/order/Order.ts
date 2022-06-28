@@ -1,26 +1,44 @@
-import { Waiter } from "../../HumanManager/staff/Waiter";
 import { Table } from "../table/Table";
-import { OrderItem } from "./OrderItem";
-
+import { Waiter } from "../../HumanManager/staff/Waiter";
+import { MenuItem } from "../../MenuManager/menu/MenuItem";
+import { OrderItemStatus } from "./OrderItemStatus";
+import { Chief } from "../../HumanManager/staff/Chief";
+import { Meal } from "../../MenuManager/meal/Meal";
+import { Drink } from "../../MenuManager/drink/Drink";
+import { Customer } from "../../HumanManager/customer/Customer";
 export class Order {
-    private tables : Table[]=[];
-    protected price: number = 0;
-    protected orderItem: OrderItem[] = [];
-    constructor(private number: number, private table: Table, private servingWaiter: Waiter) {}
+    private tables : Table;
+    private cook: Chief;
+    protected totalPrice: number = 0;
+    protected foods: MenuItem[]=[];
+    constructor(
+        protected id: number, 
+        private customer: Customer,
+        private servingWaiter: Waiter,  
+        private status: OrderItemStatus,
+        ) {}
     addTable(table: Table){
-        this.tables.push(table);
-    }
-    getNumberOfTables(){
-        return this.tables.length;
-    }
-    findFreeTable():Table | undefined{
-        let tables = this.tables;
-        for (let table of tables){
-            if(table.getFreeChair() !== undefined){
-                return table;
-            }
+        if(table.isTableFree ){
+            this.tables=table;
+            table.isTableFree = false;
         }
-        return undefined;
     }
-    
+
+    getTotalPrice(){
+        let price = 0
+        for(let food of this.foods){
+          price += food.getPrice();
+        }
+        this.totalPrice = price;
+    }
+
+    addFood(meal:Meal){
+        this.foods.push(meal)
+    }
+    addDrink(drink:Drink){
+        this.foods.push(drink)
+    }
+    getCustomer(){
+        return this.customer;
+    }
 }

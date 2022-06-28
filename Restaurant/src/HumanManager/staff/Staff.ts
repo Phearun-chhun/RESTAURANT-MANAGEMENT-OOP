@@ -1,8 +1,9 @@
 import { Gender, Person } from "../Person";
+
 export enum StaffCategory {
-    WAITER,
-    MANAGER,
-    CHIEF,
+    WAITER = 'WAITER',
+    MANAGER = 'MANAGER',
+    CHIEF = 'CHIEF',
   }
   
 export class Staff extends Person {

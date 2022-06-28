@@ -1,8 +1,8 @@
-import { Gender } from "../Gender";
+import { Gender } from "../Person";
 import { Staff, StaffCategory } from "./Staff";
 
 export class Manager extends Staff {
-    constructor(category:StaffCategory=StaffCategory.MANAGER,name: string, age: number, gender: Gender) {
-        super(category,name, age, gender);
+    constructor(id: number, name: string, age: number, gender: Gender) {
+        super(StaffCategory.MANAGER, id, name, age, gender);
       }
 }

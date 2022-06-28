@@ -1,6 +1,6 @@
 export enum Gender{
-  MALE,
-  FEMALE,
+  MALE = 'MALE',
+  FEMALE = 'FEMALE',
 }
 /**
  * Any person in the staff and customer in restaurant

@@ -1,7 +1,6 @@
 export enum Category {
-    SOFTDRINK,
-    DESSERT,
-    ALCOHOLDRINK,
-    CHILMENU,
-    MAINMENU
+    SOFTDRINK = 'SOFTDRINK',
+    ACOHOLDRINK = 'ALCOHOLDRINK',
+    DESSERT = 'DESSERT',
+    DISH = 'DISH',
 }
