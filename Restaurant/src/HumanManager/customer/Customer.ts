@@ -1,5 +1,4 @@
-import { Gender } from "../Gender";
-import { Person } from "../Person";
+import { Gender, Person } from "../Person";
 import {Order} from "../../OrderManager/order/Order";
 export class Customer extends Person {
     orderItem: Order[];
@@ -7,8 +6,11 @@ export class Customer extends Person {
         id:number,
         name: string,
         age: number,
-        gender: Gender
+        gender: Gender,
       ) {
         super(id,name, age, gender)
     }
 }
+
+
+
