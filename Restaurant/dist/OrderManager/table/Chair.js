@@ -8,24 +8,6 @@ var Chair = /** @class */ (function () {
         this.status = ChairStatus_1.ChairStatus.GOOD;
         this.customers = undefined;
     }
-    Chair.prototype.setCustomer = function (customer) {
-        this.customers = customer;
-    };
-    Chair.prototype.hasCustomer = function () {
-        return this.customers !== undefined;
-    };
-    Chair.prototype.getCustomer = function () {
-        return this.customers;
-    };
-    Chair.prototype.getStatus = function () {
-        return this.status;
-    };
-    Chair.prototype.setStatus = function (newStatus) {
-        this.status = newStatus;
-    };
-    Chair.prototype.removeCustomer = function () {
-        return this.customers = undefined; //
-    };
     return Chair;
 }());
 exports.Chair = Chair;

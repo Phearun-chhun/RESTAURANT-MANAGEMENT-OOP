@@ -22,7 +22,7 @@ var Order = /** @class */ (function () {
             var food = _a[_i];
             price += food.getPrice();
         }
-        this.totalPrice = price;
+        return this.totalPrice = price;
     };
     Order.prototype.addFood = function (meal) {
         this.foods.push(meal);

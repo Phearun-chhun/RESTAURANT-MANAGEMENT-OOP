@@ -5,16 +5,13 @@ import { Table } from "./table/Table";
 export class OrderManager {
     private orders: Order[] = [];
 
-    getOrders() {
-        return this.orders;
-    }
     customerOrder(customer:Customer){
         let isHave = false;
         for(let order of this.orders){
-           console.log(order.getCustomer());
-           if(order.getCustomer().isEqual(customer)){
+            console.log(order.getCustomer());
+            if(order.getCustomer().isEqual(customer)){
                 isHave = true;
-           }
+            }
         }
         return isHave;
     }
@@ -23,4 +20,7 @@ export class OrderManager {
             this.orders.push(order)   
         }
     }
+        getOrders() {
+            return this.orders;
+        }
 }

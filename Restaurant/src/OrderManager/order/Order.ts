@@ -6,6 +6,7 @@ import { Chief } from "../../HumanManager/staff/Chief";
 import { Meal } from "../../MenuManager/meal/Meal";
 import { Drink } from "../../MenuManager/drink/Drink";
 import { Customer } from "../../HumanManager/customer/Customer";
+import { Receipt } from "../../Payment/Reciept";
 export class Order {
     private tables : Table;
     private cook: Chief;
@@ -29,7 +30,7 @@ export class Order {
         for(let food of this.foods){
           price += food.getPrice();
         }
-        this.totalPrice = price;
+        return  this.totalPrice = price;
     }
 
     addFood(meal:Meal){

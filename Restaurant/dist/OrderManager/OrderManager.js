@@ -5,9 +5,6 @@ var OrderManager = /** @class */ (function () {
     function OrderManager() {
         this.orders = [];
     }
-    OrderManager.prototype.getOrders = function () {
-        return this.orders;
-    };
     OrderManager.prototype.customerOrder = function (customer) {
         var isHave = false;
         for (var _i = 0, _a = this.orders; _i < _a.length; _i++) {
@@ -23,6 +20,9 @@ var OrderManager = /** @class */ (function () {
         if (!(this.customerOrder(order.getCustomer()))) {
             this.orders.push(order);
         }
+    };
+    OrderManager.prototype.getOrders = function () {
+        return this.orders;
     };
     return OrderManager;
 }());

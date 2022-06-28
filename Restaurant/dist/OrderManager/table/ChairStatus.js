@@ -4,6 +4,5 @@ exports.ChairStatus = void 0;
 var ChairStatus;
 (function (ChairStatus) {
     ChairStatus[ChairStatus["GOOD"] = 0] = "GOOD";
-    ChairStatus[ChairStatus["OPERATIONAL"] = 1] = "OPERATIONAL";
-    ChairStatus[ChairStatus["BROKEN"] = 2] = "BROKEN";
+    ChairStatus[ChairStatus["BROKEN"] = 1] = "BROKEN";
 })(ChairStatus = exports.ChairStatus || (exports.ChairStatus = {}));
