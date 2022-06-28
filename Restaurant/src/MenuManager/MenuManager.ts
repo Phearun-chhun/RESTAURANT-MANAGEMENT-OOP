@@ -9,3 +9,4 @@ export class MenuManager {
         return this.menuCategory;
     }
 }
+

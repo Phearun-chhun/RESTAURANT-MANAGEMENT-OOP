@@ -3,5 +3,6 @@ export enum OrderItemStatus {
     LISTED,
     COOK,
     PAID,
-    CANCELLED
+    CANCELLED,
+    COOKING
 }
