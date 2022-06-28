@@ -1,11 +1,11 @@
-import { Category } from "../../menu/Category";
-import { DiskSide, Meal } from "../Meal";
+import { Category } from "../../menu/MenuItem";
+import { DiskSize, Meal } from "../Meal";
 
 export class Dessert extends Meal {
     constructor(name:string,
         description:string,
         price: number, 
-        dishSide: DiskSide){
+        dishSide: DiskSize){
         super(dishSide,Category.DESSERT, name,description, price)
     }
 }

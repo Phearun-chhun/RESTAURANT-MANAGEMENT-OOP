@@ -1,5 +1,5 @@
+import { Category } from "../../menu/MenuItem";
 import { Drink } from "../Drink";
-import { Category } from "../../menu/Category";
 
 export class SoftDrink extends Drink {
     constructor(name: string, description: string, volume: number, price: number){
