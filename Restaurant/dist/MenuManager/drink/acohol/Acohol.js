@@ -16,12 +16,12 @@ var __extends = (this && this.__extends) || (function () {
 })();
 exports.__esModule = true;
 exports.Acohol = void 0;
+var MenuItem_1 = require("../../menu/MenuItem");
 var Drink_1 = require("../Drink");
-var Category_1 = require("../../menu/Category");
 var Acohol = /** @class */ (function (_super) {
     __extends(Acohol, _super);
     function Acohol(name, description, volume, price) {
-        return _super.call(this, Category_1.Category.ACOHOLDRINK, name, description, volume, price) || this;
+        return _super.call(this, MenuItem_1.Category.ACOHOLDRINK, name, description, volume, price) || this;
     }
     return Acohol;
 }(Drink_1.Drink));

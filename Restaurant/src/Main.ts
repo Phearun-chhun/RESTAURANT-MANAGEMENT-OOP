@@ -3,17 +3,17 @@ import { Gender } from "./HumanManager/Person";
 import { Chief } from "./HumanManager/staff/Chief";
 import { Manager } from "./HumanManager/staff/Manager";
 import { Waiter } from "./HumanManager/staff/Waiter";
+import { Chair } from "./OrderManager/table/Chair";
 import { Acohol } from "./MenuManager/drink/acohol/Acohol";
 import { Drink } from "./MenuManager/drink/Drink";
 import { SoftDrink } from "./MenuManager/drink/softDrink/SoftDrink";
 import { Dessert } from "./MenuManager/meal/desert/Desert";
 import { GeneralDish } from "./MenuManager/meal/generalDish/GeneralDish";
-import { DiskSide } from "./MenuManager/meal/Meal";
+import { DiskSize } from "./MenuManager/meal/Meal";
+import { Restuarant } from "./Restaurant";
+import { Table } from "./OrderManager/table/Table";
 import { Order } from "./OrderManager/order/Order";
 import { OrderItemStatus } from "./OrderManager/order/OrderItemStatus";
-import { Chair } from "./OrderManager/table/Chair";
-import { Table } from "./OrderManager/table/Table";
-import { Restuarant } from "./Restaurant";
 
 let restuarant = new Restuarant('mengyi', 'Phnom Penh');
 
@@ -74,14 +74,14 @@ let applePie = new Dessert(
     "Apple Pie",
     "The pupular dessert from French",
     5,
-    DiskSide.SMALL
+    DiskSize.SMALL
 )
 
 let BananaDessertRecipe = new Dessert(
     "Banana Dessert Recipe",
     "Made form banana from Cambodia",
     3,
-    DiskSide.SMALL
+    DiskSize.SMALL
 )
 
 
@@ -90,19 +90,19 @@ let friedRice = new GeneralDish(
     "Fried Rice",
     "Oyster sauce, soy sauce, grain white rice, toasted sesame oil",
     2.5,
-    DiskSide.MEDIUM)
+    DiskSize.MEDIUM)
 
 let koko = new GeneralDish(
     "Koko soup",
     "Tranditional dish from Cambodia",
     4,
-    DiskSide.BIG)
+    DiskSize.BIG)
 
 let khmerNoodle = new GeneralDish(
     "Khmer Noodle",
     "Tranditional food from Cambodia",
     2,
-    DiskSide.MEDIUM)
+    DiskSize.MEDIUM)
 
 // VIP Menu 
 // Drink -----------
@@ -142,14 +142,14 @@ let appleGold = new Dessert(
     "Apple Pie Gold",
     "The pupular dessert from UK",
     50,
-    DiskSide.SMALL
+    DiskSize.SMALL
 )
 
 let caca = new Dessert(
     "Caca Dessert Recipe",
     "Made form coconut from Cambodia",
     50,
-    DiskSide.SMALL
+    DiskSize.SMALL
 )
 
 // + Dishes 
@@ -157,19 +157,19 @@ let loklak = new GeneralDish(
     "Lok Lack India",
     "The best dish in the world from India",
     50,
-    DiskSide.SMALL)
+    DiskSize.SMALL)
 
 let vonto = new GeneralDish(
     "Vonto soup",
     "Tranditional dish from Japan",
     60,
-    DiskSide.MEDIUM)
+    DiskSize.MEDIUM)
 
 let horacy = new GeneralDish(
     "horacy Noodle",
     "Tranditional food from Indonasia",
     25,
-    DiskSide.MEDIUM)
+    DiskSize.MEDIUM)
 
 restuarant.menu.normal.addDrink(whiskey, abc, jinroSoju, coca, milk);
 restuarant.menu.normal.addFood(applePie, BananaDessertRecipe, friedRice, koko, khmerNoodle);
@@ -207,3 +207,5 @@ restuarant.order.addOrder(order1);
 restuarant.order.addOrder(order2);
 restuarant.order.customerOrder(customer1);
 console.log(restuarant);
+console.log(restuarant.menu.vip);
+console.log(restuarant.order);

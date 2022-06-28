@@ -16,12 +16,12 @@ var __extends = (this && this.__extends) || (function () {
 })();
 exports.__esModule = true;
 exports.SoftDrink = void 0;
+var MenuItem_1 = require("../../menu/MenuItem");
 var Drink_1 = require("../Drink");
-var Category_1 = require("../../menu/Category");
 var SoftDrink = /** @class */ (function (_super) {
     __extends(SoftDrink, _super);
     function SoftDrink(name, description, volume, price) {
-        return _super.call(this, Category_1.Category.SOFTDRINK, name, description, price, volume) || this;
+        return _super.call(this, MenuItem_1.Category.SOFTDRINK, name, description, price, volume) || this;
     }
     return SoftDrink;
 }(Drink_1.Drink));

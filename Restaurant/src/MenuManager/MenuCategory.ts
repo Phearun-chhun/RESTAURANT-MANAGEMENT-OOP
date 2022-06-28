@@ -1,6 +1,7 @@
 import { Drink } from "./drink/Drink";
+import { Dessert } from "./meal/desert/Desert";
 import { Meal } from "./meal/Meal"
-import { Category } from "./menu/Category";
+import { Category } from "./menu/MenuItem";
 
 export enum MenuType {
     VIP = 'VIP',
@@ -18,5 +19,15 @@ export class MenuCategory {
 
     addFood(...meal: Meal[]){
         this.foods = this.foods.concat(meal);
+    }
+
+    getDessert(): Dessert[]{
+        let desserts: Dessert[] = [];
+        this.foods.forEach(food => {
+            if(food.getCategory()==Category.DESSERT){
+                desserts.push(food);
+            }
+        });
+        return desserts;
     }
 }

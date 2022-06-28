@@ -15,22 +15,25 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 exports.__esModule = true;
-exports.Meal = exports.DiskSide = void 0;
+exports.Meal = exports.DiskSize = void 0;
 var MenuItem_1 = require("../menu/MenuItem");
-var DiskSide;
-(function (DiskSide) {
-    DiskSide["BIG"] = "BIG";
-    DiskSide["MEDIUM"] = "MEDIUM";
-    DiskSide["SMALL"] = "SMALL";
-})(DiskSide = exports.DiskSide || (exports.DiskSide = {}));
+var DiskSize;
+(function (DiskSize) {
+    DiskSize["BIG"] = "BIG";
+    DiskSize["MEDIUM"] = "MEDIUM";
+    DiskSize["SMALL"] = "SMALL";
+})(DiskSize = exports.DiskSize || (exports.DiskSize = {}));
 var Meal = /** @class */ (function (_super) {
     __extends(Meal, _super);
-    function Meal(dishSide, category, name, description, price) {
+    function Meal(dishSize, category, name, description, price) {
         var _this = _super.call(this, name, description, price) || this;
-        _this.dishSide = dishSide;
+        _this.dishSize = dishSize;
         _this.category = category;
         return _this;
     }
+    Meal.prototype.getCategory = function () {
+        return this.category;
+    };
     return Meal;
 }(MenuItem_1.MenuItem));
 exports.Meal = Meal;

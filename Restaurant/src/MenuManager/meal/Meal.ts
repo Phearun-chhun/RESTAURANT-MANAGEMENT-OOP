@@ -1,14 +1,17 @@
-import { Category } from "../menu/Category";
-import { MenuItem } from "../menu/MenuItem";
+import { Category, MenuItem } from "../menu/MenuItem";
 
-export enum DiskSide {
+export enum DiskSize {
     BIG = 'BIG',
     MEDIUM = 'MEDIUM',
     SMALL = 'SMALL',
 }
 
 export class Meal extends MenuItem{
-    constructor(protected dishSide: DiskSide, protected category: Category, name:string,description:string, price: number){
+    constructor(protected dishSize: DiskSize, protected category: Category, name:string,description:string, price: number){
         super(name,description, price)
+    }
+
+    getCategory(): Category {
+       return this.category;
     }
 }

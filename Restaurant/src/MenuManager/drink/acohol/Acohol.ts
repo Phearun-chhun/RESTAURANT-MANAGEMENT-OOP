@@ -1,5 +1,5 @@
+import { Category } from "../../menu/MenuItem";
 import { Drink } from "../Drink";
-import { Category } from "../../menu/Category";
 
 
 export class Acohol extends Drink {

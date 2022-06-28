@@ -1,6 +1,7 @@
 "use strict";
 exports.__esModule = true;
 exports.MenuCategory = exports.MenuType = void 0;
+var MenuItem_1 = require("./menu/MenuItem");
 var MenuType;
 (function (MenuType) {
     MenuType["VIP"] = "VIP";
@@ -26,6 +27,15 @@ var MenuCategory = /** @class */ (function () {
             meal[_i] = arguments[_i];
         }
         this.foods = this.foods.concat(meal);
+    };
+    MenuCategory.prototype.getDessert = function () {
+        var desserts = [];
+        this.foods.forEach(function (food) {
+            if (food.getCategory() == MenuItem_1.Category.DESSERT) {
+                desserts.push(food);
+            }
+        });
+        return desserts;
     };
     return MenuCategory;
 }());

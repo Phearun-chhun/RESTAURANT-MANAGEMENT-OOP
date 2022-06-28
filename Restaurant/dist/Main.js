@@ -5,16 +5,16 @@ var Person_1 = require("./HumanManager/Person");
 var Chief_1 = require("./HumanManager/staff/Chief");
 var Manager_1 = require("./HumanManager/staff/Manager");
 var Waiter_1 = require("./HumanManager/staff/Waiter");
+var Chair_1 = require("./OrderManager/table/Chair");
 var Acohol_1 = require("./MenuManager/drink/acohol/Acohol");
 var SoftDrink_1 = require("./MenuManager/drink/softDrink/SoftDrink");
 var Desert_1 = require("./MenuManager/meal/desert/Desert");
 var GeneralDish_1 = require("./MenuManager/meal/generalDish/GeneralDish");
 var Meal_1 = require("./MenuManager/meal/Meal");
+var Restaurant_1 = require("./Restaurant");
+var Table_1 = require("./OrderManager/table/Table");
 var Order_1 = require("./OrderManager/order/Order");
 var OrderItemStatus_1 = require("./OrderManager/order/OrderItemStatus");
-var Chair_1 = require("./OrderManager/table/Chair");
-var Table_1 = require("./OrderManager/table/Table");
-var Restaurant_1 = require("./Restaurant");
 var restuarant = new Restaurant_1.Restuarant('mengyi', 'Phnom Penh');
 var customer1 = new Customer_1.Customer(1, 'kaka', 38, Person_1.Gender.FEMALE);
 var customer2 = new Customer_1.Customer(2, 'santa', 30, Person_1.Gender.MALE);
@@ -39,12 +39,12 @@ var jinroSoju = new Acohol_1.Acohol("Jinro Soju", "Soju is a clear, distilled al
 var coca = new SoftDrink_1.SoftDrink("Coca Cola", "Coco-Cola is the world’s favourite soft drink and has been enjoyed since 1886.", 1, 330);
 var milk = new SoftDrink_1.SoftDrink("Fresh Milk", "Natural Milk and Fresh", 1, 330);
 // + Dessert 
-var applePie = new Desert_1.Dessert("Apple Pie", "The pupular dessert from French", 5, Meal_1.DiskSide.SMALL);
-var BananaDessertRecipe = new Desert_1.Dessert("Banana Dessert Recipe", "Made form banana from Cambodia", 3, Meal_1.DiskSide.SMALL);
+var applePie = new Desert_1.Dessert("Apple Pie", "The pupular dessert from French", 5, Meal_1.DiskSize.SMALL);
+var BananaDessertRecipe = new Desert_1.Dessert("Banana Dessert Recipe", "Made form banana from Cambodia", 3, Meal_1.DiskSize.SMALL);
 // + Dishes 
-var friedRice = new GeneralDish_1.GeneralDish("Fried Rice", "Oyster sauce, soy sauce, grain white rice, toasted sesame oil", 2.5, Meal_1.DiskSide.MEDIUM);
-var koko = new GeneralDish_1.GeneralDish("Koko soup", "Tranditional dish from Cambodia", 4, Meal_1.DiskSide.BIG);
-var khmerNoodle = new GeneralDish_1.GeneralDish("Khmer Noodle", "Tranditional food from Cambodia", 2, Meal_1.DiskSide.MEDIUM);
+var friedRice = new GeneralDish_1.GeneralDish("Fried Rice", "Oyster sauce, soy sauce, grain white rice, toasted sesame oil", 2.5, Meal_1.DiskSize.MEDIUM);
+var koko = new GeneralDish_1.GeneralDish("Koko soup", "Tranditional dish from Cambodia", 4, Meal_1.DiskSize.BIG);
+var khmerNoodle = new GeneralDish_1.GeneralDish("Khmer Noodle", "Tranditional food from Cambodia", 2, Meal_1.DiskSize.MEDIUM);
 // VIP Menu 
 // Drink -----------
 // + Acohol 
@@ -55,12 +55,12 @@ var jinroJuko = new Acohol_1.Acohol("Jinro Juko", "Jinro Juko is a clear, distil
 var cocaTranditional = new SoftDrink_1.SoftDrink("Coca Coca Tranditional", "Coco-Cola Tranditional is the world’s favourite soft drink and has been enjoyed since 1886.", 333, 333);
 var orangeJucy = new SoftDrink_1.SoftDrink("Fresh orange Jucy", "Natural Orange and Fresh from Newzelen", 100, 500);
 // + Dessert 
-var appleGold = new Desert_1.Dessert("Apple Pie Gold", "The pupular dessert from UK", 50, Meal_1.DiskSide.SMALL);
-var caca = new Desert_1.Dessert("Caca Dessert Recipe", "Made form coconut from Cambodia", 50, Meal_1.DiskSide.SMALL);
+var appleGold = new Desert_1.Dessert("Apple Pie Gold", "The pupular dessert from UK", 50, Meal_1.DiskSize.SMALL);
+var caca = new Desert_1.Dessert("Caca Dessert Recipe", "Made form coconut from Cambodia", 50, Meal_1.DiskSize.SMALL);
 // + Dishes 
-var loklak = new GeneralDish_1.GeneralDish("Lok Lack India", "The best dish in the world from India", 50, Meal_1.DiskSide.SMALL);
-var vonto = new GeneralDish_1.GeneralDish("Vonto soup", "Tranditional dish from Japan", 60, Meal_1.DiskSide.MEDIUM);
-var horacy = new GeneralDish_1.GeneralDish("horacy Noodle", "Tranditional food from Indonasia", 25, Meal_1.DiskSide.MEDIUM);
+var loklak = new GeneralDish_1.GeneralDish("Lok Lack India", "The best dish in the world from India", 50, Meal_1.DiskSize.SMALL);
+var vonto = new GeneralDish_1.GeneralDish("Vonto soup", "Tranditional dish from Japan", 60, Meal_1.DiskSize.MEDIUM);
+var horacy = new GeneralDish_1.GeneralDish("horacy Noodle", "Tranditional food from Indonasia", 25, Meal_1.DiskSize.MEDIUM);
 restuarant.menu.normal.addDrink(whiskey, abc, jinroSoju, coca, milk);
 restuarant.menu.normal.addFood(applePie, BananaDessertRecipe, friedRice, koko, khmerNoodle);
 restuarant.menu.vip.addDrink(whiskeyLate, vanLantos, jinroJuko, cocaTranditional, orangeJucy);
@@ -96,3 +96,5 @@ restuarant.order.addOrder(order1);
 restuarant.order.addOrder(order2);
 restuarant.order.customerOrder(customer1);
 console.log(restuarant);
+console.log(restuarant.menu.vip);
+console.log(restuarant.order);
