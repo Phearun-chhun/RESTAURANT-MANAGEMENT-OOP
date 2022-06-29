@@ -15,7 +15,10 @@ import { Order } from "./OrderManager/order/Order";
 import { OrderItemStatus } from "./OrderManager/order/OrderItemStatus";
 import { PaymentManager } from "./Payment/PayManager";
 import { PayByMoney } from "./Payment/PayByMoney";
+import { Address } from "./Address";
+import { OfflineOrder } from "./OrderManager/order/OfflineOrder";
 import { Receipt } from "./Payment/Reciept";
+import { OnlineOrder } from "./OrderManager/order/OnlineOrder";
 
 let restuarant = new Restuarant('mengyi', 'Phnom Penh');
 
@@ -23,6 +26,16 @@ let customer1 = new Customer(1, 'kaka', 38, Gender.FEMALE,2);
 let customer2 = new Customer(2, 'santa', 30, Gender.MALE,2);
 let customer3 = new Customer(3, 'vanda', 29, Gender.MALE,1);
 let customer4 = new Customer(4, 'nara', 28, Gender.FEMALE,2);
+
+// Address for Customer 
+let address1 = new Address('371', 'Phnom Penh', 'Cambodia');
+let address2 = new Address('21', 'Kandal', 'Cambodia');
+let address3 = new Address('313', 'Kompot', 'Cambodia');
+let address4 = new Address('333', 'London', 'UK');
+customer1.setAddress(address1);
+customer2.setAddress(address2);
+customer3.setAddress(address3);
+customer4.setAddress(address4);
 
 restuarant.hr.addCustomer(customer1, customer2, customer3, customer4);
 
@@ -182,30 +195,32 @@ restuarant.menu.vip.addFood(appleGold, caca, loklak, vonto, horacy);
 let table1 = new Table(1,4);
 let table2 = new Table(2,2);
 table1.addCustomer(customer1);
-table2.addCustomer(customer1);
-
-let order1 = new Order(1,vansao,OrderItemStatus.LISTED);
-let order2 = new Order(2,vansao,OrderItemStatus.LISTED);
-order1.addTable(table1);
+table2.addCustomer(customer2);
+let customerAddress = new Address('St.265', 'Phnom Penh', 'Cambodia');
+let order1 = new OnlineOrder(1, customer1,customerAddress);
+let order2 = new OfflineOrder(2, vansao);
 order1.addFood(loklak);
 order1.addDrink(jinroJuko);
 order1.addFood(appleGold);
 order1.getTotalPrice();
-order1.getTable();
 order2.addTable(table2);
 order2.addFood(koko);
 order2.addDrink(coca);
 order2.addFood(appleGold);
 order2.getTotalPrice();
-restuarant.order.addOrder(order1);
-restuarant.order.addOrder(order2);
+restuarant.order.addOnlineOrder(order1);
+restuarant.order.addOfflineOrder(order2);
+console.log("getOfflineOrder: "+restuarant.order.getOfflineOrder());
+console.log("getOnlineOrder: "+restuarant.order.getOnlineOrder());
 console.log("======get staff======");
 console.log(restuarant.hr.getStaff());
 order1.setCook(phearun)
 order2.setCook(phearun)
 order2.setStatus(OrderItemStatus.COOKING)
 console.log("======get all order======");
-console.log(restuarant.order.getOrders());
+restuarant.order.getOnlineOrder();
+restuarant.order.getOfflineOrder();
+console.log(restuarant.order);
 
 //payment
 let paymentManager = new PaymentManager();

@@ -5,6 +5,7 @@ export enum StaffCategory {
     WAITER = 'WAITER',
     MANAGER = 'MANAGER',
     CHIEF = 'CHIEF',
+    DELEVERY = 'DELEVERY',
   }
   
 export class Staff extends Person {

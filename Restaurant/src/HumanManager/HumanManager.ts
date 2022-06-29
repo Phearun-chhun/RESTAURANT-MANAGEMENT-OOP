@@ -14,23 +14,15 @@ export class HumanManager {
     }
 
     addStaff(staff:Staff){
-        // if(staff.getCategory()!==StaffCategory.MANAGER){
             this.staffs.push(staff);
-        // }
     }
 
-    // addManager(manager:Staff){
-    //     if(manager.getCategory()==StaffCategory.MANAGER){
-    //         this.manager = manager;
-    //     }
-    // }
     getStaff(){
         return this.staffs;
     }
     getTotalSalaryOfStaff() { 
         let salary = 0; 
         for (let staff of this.staffs) {
-            console.log("staff: "+staff.getCategory())
             salary += staff.getSalary();
         }   
         return this.staffSalaray= salary;
