@@ -1,21 +1,16 @@
 "use strict";
 exports.__esModule = true;
 exports.Order = void 0;
+var OrderItemStatus_1 = require("./OrderItemStatus");
 var Order = /** @class */ (function () {
-    function Order(id, customer, servingWaiter, status) {
+    function Order(orderType, id, status) {
+        this.orderType = orderType;
         this.id = id;
-        this.customer = customer;
-        this.servingWaiter = servingWaiter;
         this.status = status;
+        this.dateOrder = new Date().toString();
         this.totalPrice = 0;
         this.foods = [];
     }
-    Order.prototype.addTable = function (table) {
-        if (table.isTableFree) {
-            this.tables = table;
-            table.isTableFree = false;
-        }
-    };
     Order.prototype.getTotalPrice = function () {
         var price = 0;
         for (var _i = 0, _a = this.foods; _i < _a.length; _i++) {
@@ -30,14 +25,16 @@ var Order = /** @class */ (function () {
     Order.prototype.addDrink = function (drink) {
         this.foods.push(drink);
     };
-    Order.prototype.getCustomer = function () {
-        return this.customer;
+    Order.prototype.setCook = function (chief) {
+        this.cook = chief;
+        this.status = OrderItemStatus_1.OrderItemStatus.COOK;
+    };
+    Order.prototype.setStatus = function (status) {
+        this.status = status;
     };
     Order.prototype.isOrderEqual = function (other) {
         return this.id === other.id &&
-            this.customer === other.customer &&
-            this.totalPrice === other.totalPrice &&
-            this.tables === other.tables;
+            this.totalPrice === other.totalPrice;
     };
     return Order;
 }());

@@ -1,29 +1,28 @@
 import { Order } from "../OrderManager/order/Order";
 import { Pay } from "./pay";
+import { PayByMoney } from "./PayByMoney";
 import { Receipt } from "./Reciept";
 
 export class PaymentManager {
-
-    private pays:Pay[]=[];
-    private receipts:Receipt[]=[] ;
+    private listTopay:PayByMoney[]=[];
+    private receipts:Receipt[]=[];
     addPay(...pay:Pay[]){
-        this.pays= this.pays.concat(pay);
+        this.listTopay= this.listTopay.concat(pay);
     }
     getPay():Pay[]{
-        return this.pays;
+        return this.listTopay;
     }
-    // isOrderPaid(order:Order):boolean{
-    //     let isPaid  = false;
-    //     let pays = this.pays; 
-    //     for(let k=0; k<pays.length; k++){
-    //         if(pays[k].getOrders().isOrderEqual(order)){
-    //             isPaid = true;
-    //         }
-    //     }
-    //     return isPaid;
-    // }
+    isOrderPaid(order:Order):boolean{
+        let isPaid  = false;
+        let listTopay = this.listTopay; 
+        for(let k=0; k<listTopay.length; k++){
+            if(listTopay[k].getOrders().isOrderEqual(order)){
+                isPaid = true;
+            }
+        }
+        return isPaid;
+    }
     addReceipt(receipt: Receipt) {
-        // this.receipts = this.receipts.concat(receipt);
         this.receipts.push(receipt);
     }
     getReceipt(){

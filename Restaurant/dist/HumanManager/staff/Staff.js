@@ -22,6 +22,7 @@ var StaffCategory;
     StaffCategory["WAITER"] = "WAITER";
     StaffCategory["MANAGER"] = "MANAGER";
     StaffCategory["CHIEF"] = "CHIEF";
+    StaffCategory["DELEVERY"] = "DELEVERY";
 })(StaffCategory = exports.StaffCategory || (exports.StaffCategory = {}));
 var Staff = /** @class */ (function (_super) {
     __extends(Staff, _super);

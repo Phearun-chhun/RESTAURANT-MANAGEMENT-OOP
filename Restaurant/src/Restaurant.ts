@@ -1,9 +1,10 @@
+import { Address } from "./Address";
 import { HumanManager } from "./HumanManager/HumanManager";
 import { MenuManager } from "./MenuManager/MenuManager";
 import { OrderManager } from "./OrderManager/OrderManager";
 
 export class Restuarant {
-    private address?: string;
+    private address?: Address;
     private name: string;
 
     public hr: HumanManager = new HumanManager();
@@ -11,7 +12,7 @@ export class Restuarant {
     public menu: MenuManager = new MenuManager();
 
 
-    constructor(name: string, address?: string){
+    constructor(name: string, address?: Address){
         this.name = name;
         this.address = address;
     }

@@ -17,7 +17,9 @@ export class OfflineOrder extends Order {
             table.isTableFree = false;
         }
     }
-
+    getTable() {
+        return this.tables;
+    }
     setStatus(status: OrderItemStatus){
         this.status = status;
     }

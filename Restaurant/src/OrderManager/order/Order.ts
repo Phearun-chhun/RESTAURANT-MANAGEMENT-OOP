@@ -32,10 +32,6 @@ export abstract class Order {
         this.foods.push(drink)
     }
 
-    // getCustomer(){
-    //     return this.customer;
-    // }
-
     setCook(chief: Chief){
         this.cook = chief;
         this.status = OrderItemStatus.COOK;
@@ -44,10 +40,9 @@ export abstract class Order {
     setStatus(status: OrderItemStatus){
         this.status = status;
     }
-    // isOrderEqual(other:Order){
-    //     return this.id === other.id && 
-    //            this.customer === other.customer &&
-    //            this.totalPrice === other.totalPrice &&
-    //            this.tables=== other.tables
-    // }
+    
+    isOrderEqual(other:Order){
+        return this.id === other.id &&
+            this.totalPrice === other.totalPrice;
+    }
 }

@@ -4,22 +4,20 @@ import { Chief } from "./HumanManager/staff/Chief";
 import { Manager } from "./HumanManager/staff/Manager";
 import { Waiter } from "./HumanManager/staff/Waiter";
 import { Acohol } from "./MenuManager/drink/acohol/Acohol";
-import { Drink } from "./MenuManager/drink/Drink";
 import { SoftDrink } from "./MenuManager/drink/softDrink/SoftDrink";
 import { Dessert } from "./MenuManager/meal/desert/Desert";
 import { GeneralDish } from "./MenuManager/meal/generalDish/GeneralDish";
 import { DiskSize } from "./MenuManager/meal/Meal";
 import { Restuarant } from "./Restaurant";
 import { Table } from "./OrderManager/table/Table";
-import { Order } from "./OrderManager/order/Order";
 import { OrderItemStatus } from "./OrderManager/order/OrderItemStatus";
 import { PaymentManager } from "./Payment/PayManager";
 import { PayByMoney } from "./Payment/PayByMoney";
 import { Address } from "./Address";
 import { OfflineOrder } from "./OrderManager/order/OfflineOrder";
 import { Receipt } from "./Payment/Reciept";
+import { OnlineOrder } from "./OrderManager/order/OnlineOrder";
 
-let restuarant = new Restuarant('mengyi', 'Phnom Penh');
 
 let customer1 = new Customer(1, 'kaka', 38, Gender.FEMALE,2);
 let customer2 = new Customer(2, 'santa', 30, Gender.MALE,2);
@@ -31,6 +29,9 @@ let address1 = new Address('371', 'Phnom Penh', 'Cambodia');
 let address2 = new Address('21', 'Kandal', 'Cambodia');
 let address3 = new Address('313', 'Kompot', 'Cambodia');
 let address4 = new Address('333', 'London', 'UK');
+
+let restuarant = new Restuarant('mengyi', address1);
+
 customer1.setAddress(address1);
 customer2.setAddress(address2);
 customer3.setAddress(address3);
@@ -39,20 +40,19 @@ customer4.setAddress(address4);
 restuarant.hr.addCustomer(customer1, customer2, customer3, customer4);
 
 let mengyi = new Manager(12, 'Mengyi', 28, Gender.MALE);
-let mengyi2 = new Manager(12, 'Mengyi2', 28, Gender.MALE);
 let phearun = new Chief(13, 'phearun', 27, Gender.MALE);
 let vansao = new Waiter(14, 'vansao', 20, Gender.MALE);
-mengyi.setSalary(700);
-phearun.setSalary(700);
-vansao.setSalary(700);
+
+mengyi.setSalary(710);
+phearun.setSalary(600);
+vansao.setSalary(250);
 
 restuarant.hr.addStaff(mengyi)
 restuarant.hr.addStaff(phearun)
 restuarant.hr.addStaff(vansao)
 
 
-// MenuManager +++++++++++++++++
-
+// MenuManager ++++++++++++++++++++++
 // Normal Menu 
 // Drink -----------
 // + Acohol 
@@ -194,30 +194,32 @@ restuarant.menu.vip.addFood(appleGold, caca, loklak, vonto, horacy);
 let table1 = new Table(1,4);
 let table2 = new Table(2,2);
 table1.addCustomer(customer1);
-table2.addCustomer(customer1);
-
-let order1 = new OfflineOrder(1, vansao);
+table2.addCustomer(customer2);
+let customerAddress = new Address('St.265', 'Phnom Penh', 'Cambodia');
+let order1 = new OnlineOrder(1, customer1,customerAddress);
 let order2 = new OfflineOrder(2, vansao);
-order1.addTable(table1);
 order1.addFood(loklak);
 order1.addDrink(jinroJuko);
 order1.addFood(appleGold);
 order1.getTotalPrice();
-// order1.getTable();
 order2.addTable(table2);
 order2.addFood(koko);
 order2.addDrink(coca);
 order2.addFood(appleGold);
 order2.getTotalPrice();
-// restuarant.order.addOrder(order1);
-// restuarant.order.addOrder(order2);
+restuarant.order.addOnlineOrder(order1);
+restuarant.order.addOfflineOrder(order2);
+console.log("getOfflineOrder: "+restuarant.order.getOfflineOrder());
+console.log("getOnlineOrder: "+restuarant.order.getOnlineOrder());
 console.log("======get staff======");
 console.log(restuarant.hr.getStaff());
 order1.setCook(phearun)
 order2.setCook(phearun)
 order2.setStatus(OrderItemStatus.COOKING)
 console.log("======get all order======");
-// console.log(restuarant.order.getOrders());
+restuarant.order.getOnlineOrder();
+restuarant.order.getOfflineOrder();
+console.log(restuarant.order);
 
 //payment
 let paymentManager = new PaymentManager();
@@ -227,8 +229,8 @@ paymentManager.addPay(pay1)
 paymentManager.addPay(pay2)
 console.log("======payment list======");
 console.log(paymentManager.getPay());   
-// console.log(paymentManager.isOrderPaid(order1));
-// console.log(paymentManager.isOrderPaid(order2));
+console.log(paymentManager.isOrderPaid(order1));
+console.log(paymentManager.isOrderPaid(order2));
 let receipt1 = new Receipt(1,order1,500)
 let receipt2 = new Receipt(2,order2,1000)
 paymentManager.addReceipt(receipt1);
@@ -236,6 +238,8 @@ paymentManager.addReceipt(receipt2);
 receipt1.toPay(pay1);
 console.log("======get receipt======");
 console.log(paymentManager.getReceipt());
-console.log( receipt1.toPay(pay1));
+console.log(receipt1.toPay(pay1));
 console.log(receipt2.toPay(pay2));
-console.log("Salary of staff: "+restuarant.hr.getTotalSalaryOfStaff()); 
+
+// console.log(restuarant.order);
+

@@ -29,6 +29,9 @@ var Drink = /** @class */ (function (_super) {
         _this.volume = volume;
         return _this;
     }
+    Drink.prototype.getCategory = function () {
+        return this.category;
+    };
     return Drink;
 }(MenuItem_1.MenuItem));
 exports.Drink = Drink;

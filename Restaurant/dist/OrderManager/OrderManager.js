@@ -3,26 +3,20 @@ exports.__esModule = true;
 exports.OrderManager = void 0;
 var OrderManager = /** @class */ (function () {
     function OrderManager() {
-        this.orders = [];
+        this.offlineOrder = [];
+        this.onlineOrder = [];
     }
-    OrderManager.prototype.customerOrder = function (customer) {
-        var isHave = false;
-        for (var _i = 0, _a = this.orders; _i < _a.length; _i++) {
-            var order = _a[_i];
-            console.log(order.getCustomer());
-            if (order.getCustomer().isEqual(customer)) {
-                isHave = true;
-            }
-        }
-        return isHave;
+    OrderManager.prototype.addOnlineOrder = function (onlineOrder) {
+        this.onlineOrder.push(onlineOrder);
     };
-    OrderManager.prototype.addOrder = function (order) {
-        if (!(this.customerOrder(order.getCustomer()))) {
-            this.orders.push(order);
-        }
+    OrderManager.prototype.getOnlineOrder = function () {
+        return this.onlineOrder;
     };
-    OrderManager.prototype.getOrders = function () {
-        return this.orders;
+    OrderManager.prototype.addOfflineOrder = function (offlineOrder) {
+        this.offlineOrder.push(offlineOrder);
+    };
+    OrderManager.prototype.getOfflineOrder = function () {
+        return this.offlineOrder;
     };
     return OrderManager;
 }());

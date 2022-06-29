@@ -19,14 +19,20 @@ exports.Customer = void 0;
 var Person_1 = require("../Person");
 var Customer = /** @class */ (function (_super) {
     __extends(Customer, _super);
-    function Customer(id, name, age, gender) {
-        return _super.call(this, id, name, age, gender) || this;
+    function Customer(id, name, age, gender, member) {
+        var _this = _super.call(this, id, name, age, gender) || this;
+        _this.member = member;
+        return _this;
     }
+    Customer.prototype.getMember = function () {
+        return this.member;
+    };
     Customer.prototype.isEqual = function (other) {
         return this.id === other.id &&
             this.name === other.name &&
             this.age === other.age &&
-            this.gender === other.gender;
+            this.gender === other.gender &&
+            this.member == other.member;
     };
     return Customer;
 }(Person_1.Person));

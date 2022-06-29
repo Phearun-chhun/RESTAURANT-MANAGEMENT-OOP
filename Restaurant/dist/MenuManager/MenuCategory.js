@@ -37,6 +37,33 @@ var MenuCategory = /** @class */ (function () {
         });
         return desserts;
     };
+    MenuCategory.prototype.getDish = function () {
+        var dishes = [];
+        this.foods.forEach(function (food) {
+            if (food.getCategory() == MenuItem_1.Category.DISH) {
+                dishes.push(food);
+            }
+        });
+        return dishes;
+    };
+    MenuCategory.prototype.getAcohol = function () {
+        var acohols = [];
+        this.drinks.forEach(function (drink) {
+            if (drink.getCategory() == MenuItem_1.Category.ACOHOLDRINK) {
+                acohols.push(drink);
+            }
+        });
+        return acohols;
+    };
+    MenuCategory.prototype.getSoftDrink = function () {
+        var softDrinks = [];
+        this.drinks.forEach(function (drink) {
+            if (drink.getCategory() == MenuItem_1.Category.SOFTDRINK) {
+                softDrinks.push(drink);
+            }
+        });
+        return softDrinks;
+    };
     return MenuCategory;
 }());
 exports.MenuCategory = MenuCategory;

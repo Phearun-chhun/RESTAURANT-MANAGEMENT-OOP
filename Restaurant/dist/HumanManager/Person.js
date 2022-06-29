@@ -19,6 +19,9 @@ var Person = /** @class */ (function () {
     Person.prototype.setPhone = function (phone) {
         this.phone = phone;
     };
+    Person.prototype.setAddress = function (address) {
+        this.address = address;
+    };
     return Person;
 }());
 exports.Person = Person;
