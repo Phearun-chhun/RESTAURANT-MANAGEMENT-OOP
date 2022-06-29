@@ -6,7 +6,7 @@ import { Chief } from "../../HumanManager/staff/Chief";
 import { Meal } from "../../MenuManager/meal/Meal";
 import { Drink } from "../../MenuManager/drink/Drink";
 import { Customer } from "../../HumanManager/customer/Customer";
-import { Receipt } from "../../Payment/Reciept";
+import { PayByMoney } from "../../Payment/PayByMoney";
 export class Order {
     private dateOrder = new Date().toString();
     private tables : Table;
@@ -53,6 +53,11 @@ export class Order {
 
     setStatus(status: OrderItemStatus){
         this.status = status;
-
+    }
+    isOrderEqual(other:Order){
+        return this.id === other.id && 
+               this.customer === other.customer &&
+               this.totalPrice === other.totalPrice &&
+               this.tables=== other.tables
     }
 }
