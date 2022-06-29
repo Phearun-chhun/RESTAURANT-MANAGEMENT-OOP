@@ -1,3 +1,5 @@
+import { Address } from "../Address";
+
 export enum Gender{
   MALE = 'MALE',
   FEMALE = 'FEMALE',
@@ -7,6 +9,7 @@ export enum Gender{
  */
   export abstract class Person {
     protected phone?: number;
+    protected address: Address;
   
     constructor(
       protected id:number,
@@ -17,5 +20,9 @@ export enum Gender{
   
     setPhone(phone: number) {
       this.phone = phone;
+    }
+
+    setAddress(address: Address) {
+      this.address = address;
     }
   }

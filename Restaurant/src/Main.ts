@@ -15,6 +15,8 @@ import { Order } from "./OrderManager/order/Order";
 import { OrderItemStatus } from "./OrderManager/order/OrderItemStatus";
 import { PaymentManager } from "./Payment/PayManager";
 import { PayByMoney } from "./Payment/PayByMoney";
+import { Address } from "./Address";
+import { OfflineOrder } from "./OrderManager/order/OfflineOrder";
 
 let restuarant = new Restuarant('mengyi', 'Phnom Penh');
 
@@ -22,6 +24,16 @@ let customer1 = new Customer(1, 'kaka', 38, Gender.FEMALE);
 let customer2 = new Customer(2, 'santa', 30, Gender.MALE);
 let customer3 = new Customer(3, 'vanda', 29, Gender.MALE);
 let customer4 = new Customer(4, 'nara', 28, Gender.FEMALE);
+
+// Address for Customer 
+let address1 = new Address('371', 'Phnom Penh', 'Cambodia');
+let address2 = new Address('21', 'Kandal', 'Cambodia');
+let address3 = new Address('313', 'Kompot', 'Cambodia');
+let address4 = new Address('333', 'London', 'UK');
+customer1.setAddress(address1);
+customer2.setAddress(address2);
+customer3.setAddress(address3);
+customer4.setAddress(address4);
 
 restuarant.hr.addCustomer(customer1, customer2, customer3, customer4);
 
@@ -181,8 +193,8 @@ restuarant.menu.vip.addFood(appleGold, caca, loklak, vonto, horacy);
 let table1 = new Table(1,4);
 let table2 = new Table(2,2);
 
-let order1 = new Order(1,customer1,vansao,OrderItemStatus.LISTED);
-let order2 = new Order(2,customer2,vansao,OrderItemStatus.LISTED);
+let order1 = new OfflineOrder(1, vansao);
+let order2 = new OfflineOrder(2, vansao);
 order1.addTable(table1);
 order1.addFood(loklak);
 order1.addDrink(jinroJuko);
@@ -195,10 +207,10 @@ order2.addFood(appleGold);
 order2.getTotalPrice();
 // console.log(order1);
 // console.log(order2);
-restuarant.order.addOrder(order1);
-restuarant.order.addOrder(order2);
-restuarant.order.customerOrder(customer1);
-restuarant.order.customerOrder(customer2);
+// restuarant.order.addOrder(order1);
+// restuarant.order.addOrder(order2);
+// restuarant.order.customerOrder(customer1);
+// restuarant.order.customerOrder(customer2);
 
 order1.setCook(phearun)
 order2.setStatus(OrderItemStatus.DRAFT)
@@ -211,6 +223,7 @@ let pay2 =  new PayByMoney(2,order2);
 paymentManager.addPay(pay1)
 paymentManager.addPay(pay2)
 
-console.log(paymentManager.isOrderPaid(order1));
-console.log(paymentManager.isOrderPaid(order2));
-console.log(paymentManager.getPay());
+// console.log(paymentManager.isOrderPaid(order1));
+// console.log(paymentManager.isOrderPaid(order2));
+// console.log(paymentManager.getPay());
+console.log(restuarant);
