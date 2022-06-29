@@ -1,9 +1,8 @@
+import { OrderItemStatus } from "../../OrderManager/order/OrderItemStatus";
 import { Gender, Person } from "../Person";
 import { Staff, StaffCategory } from "./Staff";
 
-/**
- * 
- */
+
 export class Chief extends Staff {
   constructor(id:number,name: string, age: number, gender: Gender) {
     super(StaffCategory.CHIEF,id,name, age, gender);

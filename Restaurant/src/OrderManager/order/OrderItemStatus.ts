@@ -1,7 +1,8 @@
 export enum OrderItemStatus {
-    DRAFT,
-    LISTED,
-    COOK,
-    PAID,
-    CANCELLED
+    DRAFT='DRAFT',
+    LISTED='LISTED',
+    COOK='COOK',
+    PAID='PAID',
+    CANCELLED='CANCELLED',
+    COOKING='COOKING',
 }

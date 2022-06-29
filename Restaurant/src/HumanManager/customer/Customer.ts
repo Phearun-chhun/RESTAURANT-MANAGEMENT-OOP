@@ -9,6 +9,12 @@ export class Customer extends Person {
       ) {
         super(id,name, age, gender)
     }
+    isEqual(other:Customer) {
+      return this.id === other.id && 
+      this.name === other.name &&
+      this.age === other.age &&
+      this.gender === other.gender
+    }
 }
 
 

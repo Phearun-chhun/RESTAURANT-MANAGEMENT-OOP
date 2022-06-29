@@ -10,6 +10,11 @@ import { Dessert } from "./MenuManager/meal/desert/Desert";
 import { GeneralDish } from "./MenuManager/meal/generalDish/GeneralDish";
 import { DiskSize } from "./MenuManager/meal/Meal";
 import { Restuarant } from "./Restaurant";
+import { Table } from "./OrderManager/table/Table";
+import { Order } from "./OrderManager/order/Order";
+import { OrderItemStatus } from "./OrderManager/order/OrderItemStatus";
+import { paymentManager } from "./Payment/PayManager";
+import { Receipt } from "./Payment/Reciept";
 
 let restuarant = new Restuarant('mengyi', 'Phnom Penh');
 
@@ -172,4 +177,34 @@ restuarant.menu.normal.addFood(applePie, BananaDessertRecipe, friedRice, koko, k
 restuarant.menu.vip.addDrink(whiskeyLate, vanLantos, jinroJuko, cocaTranditional, orangeJucy);
 restuarant.menu.vip.addFood(appleGold, caca, loklak, vonto, horacy);
 
-console.log(restuarant.menu.vip.getSoftDrink());
+// console.log(restuarant);
+let table1 = new Table(1,4);
+let table2 = new Table(2,2);
+
+let order1 = new Order(1,customer1,vansao,OrderItemStatus.LISTED);
+let order2 = new Order(2,customer2,vansao,OrderItemStatus.LISTED);
+order1.addTable(table1);
+order1.addFood(loklak);
+order1.addDrink(jinroJuko);
+order1.addFood(appleGold);
+order1.getTotalPrice();
+order2.addTable(table1);
+order2.addFood(loklak);
+order2.addDrink(jinroJuko);
+order2.addFood(appleGold);
+order2.getTotalPrice();
+// console.log(order1);
+// console.log(order2);
+restuarant.order.addOrder(order1);
+restuarant.order.addOrder(order2);
+restuarant.order.customerOrder(customer1);
+restuarant.order.customerOrder(customer2);
+// console.log(restuarant);
+// console.log(restuarant.menu.vip);
+// order1.setCook(phearun)
+// order2.setStatus(OrderItemStatus.DRAFT)
+// console.log(restuarant.order.getOrders());
+let receipt = new paymentManager();
+let pay = new Receipt(order1);
+receipt.addReceipt(pay);
+console.log(receipt.getReceipts()); 
