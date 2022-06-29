@@ -222,24 +222,23 @@ restuarant.order.getOfflineOrder();
 console.log(restuarant.order);
 
 //payment
-let paymentManager = new PaymentManager();
 let pay1 =  new PayByMoney(1,order1,500);
 let pay2 =  new PayByMoney(2,order2,1000);
-paymentManager.addPay(pay1)
-paymentManager.addPay(pay2)
+restuarant.payment.addPay(pay1)
+restuarant.payment.addPay(pay2)
 console.log("======payment list======");
-console.log(paymentManager.getPay());   
-console.log(paymentManager.isOrderPaid(order1));
-console.log(paymentManager.isOrderPaid(order2));
+console.log(restuarant.payment.getPay());   
+console.log(restuarant.payment.isOrderPaid(order1));
+console.log(restuarant.payment.isOrderPaid(order2));
 let receipt1 = new Receipt(1,order1,500)
 let receipt2 = new Receipt(2,order2,1000)
-paymentManager.addReceipt(receipt1);
-paymentManager.addReceipt(receipt2);
+restuarant.payment.addReceipt(receipt1);
+restuarant.payment.addReceipt(receipt2);
 receipt1.toPay(pay1);
 console.log("======get receipt======");
-console.log(paymentManager.getReceipt());
+console.log(restuarant.payment.getReceipt());
 console.log(receipt1.toPay(pay1));
 console.log(receipt2.toPay(pay2));
 
-// console.log(restuarant.order);
+console.log(restuarant.payment.getPay());
 

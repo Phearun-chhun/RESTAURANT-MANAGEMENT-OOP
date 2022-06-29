@@ -40,6 +40,10 @@ export abstract class Order {
     setStatus(status: OrderItemStatus){
         this.status = status;
     }
+
+    getStatus(){
+        return this.status;
+    }
     
     isOrderEqual(other:Order){
         return this.id === other.id &&

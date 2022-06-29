@@ -1,4 +1,6 @@
+import { StaffCategory } from "../HumanManager/staff/Staff";
 import { Order } from "../OrderManager/order/Order";
+import { OrderItemStatus } from "../OrderManager/order/OrderItemStatus";
 import { Pay } from "./pay";
 import { PayByMoney } from "./PayByMoney";
 import { Receipt } from "./Reciept";
@@ -6,8 +8,10 @@ import { Receipt } from "./Reciept";
 export class PaymentManager {
     private listTopay:PayByMoney[]=[];
     private receipts:Receipt[]=[];
-    addPay(...pay:Pay[]){
-        this.listTopay= this.listTopay.concat(pay);
+    addPay(pay:Pay){
+        if(pay.getOrders().getStatus()!==OrderItemStatus.PAID){
+            this.listTopay= this.listTopay.concat(pay);
+        }
     }
     getPay():Pay[]{
         return this.listTopay;
