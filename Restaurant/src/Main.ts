@@ -13,6 +13,8 @@ import { Restuarant } from "./Restaurant";
 import { Table } from "./OrderManager/table/Table";
 import { Order } from "./OrderManager/order/Order";
 import { OrderItemStatus } from "./OrderManager/order/OrderItemStatus";
+import { PaymentManager } from "./Payment/PayManager";
+import { PayByMoney } from "./Payment/PayByMoney";
 
 let restuarant = new Restuarant('mengyi', 'Phnom Penh');
 
@@ -200,3 +202,13 @@ restuarant.order.customerOrder(customer2);
 // console.log(restuarant);
 // console.log(restuarant.menu.vip);
 console.log(restuarant.order.getOrders());
+//payment
+let paymentManager = new PaymentManager();
+let pay1 =  new PayByMoney(1,order1);
+let pay2 =  new PayByMoney(2,order2);
+paymentManager.addPay(pay1)
+paymentManager.addPay(pay2)
+
+console.log(paymentManager.isOrderPaid(order1));
+console.log(paymentManager.isOrderPaid(order2));
+console.log(paymentManager.getPay());

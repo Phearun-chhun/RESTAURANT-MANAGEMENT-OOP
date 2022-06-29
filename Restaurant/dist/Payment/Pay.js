@@ -2,11 +2,12 @@
 exports.__esModule = true;
 exports.Pay = void 0;
 var Pay = /** @class */ (function () {
-    function Pay(pay) {
-        this.pay = pay;
+    function Pay(id, order) {
+        this.id = id;
+        this.order = order;
     }
-    Pay.prototype.recieveMoney = function () {
-        return this.pay;
+    Pay.prototype.getOrders = function () {
+        return this.order;
     };
     return Pay;
 }());

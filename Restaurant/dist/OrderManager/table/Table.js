@@ -5,18 +5,8 @@ var Table = /** @class */ (function () {
     function Table(id, chairNumber) {
         this.id = id;
         this.chairNumber = chairNumber;
-        this.chairs = [];
         this.isTableFree = true;
     }
-    Table.prototype.getNumberOfChairs = function () {
-        return this.chairs.length;
-    };
-    Table.prototype.getChair = function () {
-        return this.chairs;
-    };
-    Table.prototype.addChair = function (chair) {
-        return this.chairs.push(chair);
-    };
     Table.prototype.getTableId = function () {
         return this.id;
     };

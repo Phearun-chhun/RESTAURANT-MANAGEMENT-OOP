@@ -33,6 +33,12 @@ var Order = /** @class */ (function () {
     Order.prototype.getCustomer = function () {
         return this.customer;
     };
+    Order.prototype.isOrderEqual = function (other) {
+        return this.id === other.id &&
+            this.customer === other.customer &&
+            this.totalPrice === other.totalPrice &&
+            this.tables === other.tables;
+    };
     return Order;
 }());
 exports.Order = Order;
