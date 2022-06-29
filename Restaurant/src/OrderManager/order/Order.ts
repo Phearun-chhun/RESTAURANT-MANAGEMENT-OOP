@@ -11,11 +11,11 @@ export class Order {
     private dateOrder = new Date().toString();
     private tables : Table;
     private cook: Chief;
-    protected totalPrice: number = 0;
-    protected foods: MenuItem[]=[];
+    private totalPrice: number = 0;
+    private customer: Customer;
+    private foods: MenuItem[]=[];
     constructor(
-        protected id: number, 
-        private customer: Customer,
+        private id: number, 
         private servingWaiter: Waiter,  
         private status: OrderItemStatus,
         ) {}
@@ -25,7 +25,9 @@ export class Order {
             table.isTableFree = false;
         }
     }
-
+    getTable() {
+        return this.tables;
+    }
     getTotalPrice(){
         let price = 0
         for(let food of this.foods){
@@ -42,9 +44,9 @@ export class Order {
         this.foods.push(drink)
     }
 
-    getCustomer(){
-        return this.customer;
-    }
+    // getCustomer(){
+    //     return this.customer;
+    // }
 
     setCook(chief: Chief){
         this.cook = chief;

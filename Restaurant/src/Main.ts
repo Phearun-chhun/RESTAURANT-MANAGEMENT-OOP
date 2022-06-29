@@ -15,13 +15,14 @@ import { Order } from "./OrderManager/order/Order";
 import { OrderItemStatus } from "./OrderManager/order/OrderItemStatus";
 import { PaymentManager } from "./Payment/PayManager";
 import { PayByMoney } from "./Payment/PayByMoney";
+import { Receipt } from "./Payment/Reciept";
 
 let restuarant = new Restuarant('mengyi', 'Phnom Penh');
 
-let customer1 = new Customer(1, 'kaka', 38, Gender.FEMALE);
-let customer2 = new Customer(2, 'santa', 30, Gender.MALE);
-let customer3 = new Customer(3, 'vanda', 29, Gender.MALE);
-let customer4 = new Customer(4, 'nara', 28, Gender.FEMALE);
+let customer1 = new Customer(1, 'kaka', 38, Gender.FEMALE,2);
+let customer2 = new Customer(2, 'santa', 30, Gender.MALE,2);
+let customer3 = new Customer(3, 'vanda', 29, Gender.MALE,1);
+let customer4 = new Customer(4, 'nara', 28, Gender.FEMALE,2);
 
 restuarant.hr.addCustomer(customer1, customer2, customer3, customer4);
 
@@ -29,9 +30,11 @@ let mengyi = new Manager(12, 'Mengyi', 28, Gender.MALE);
 let mengyi2 = new Manager(12, 'Mengyi2', 28, Gender.MALE);
 let phearun = new Chief(13, 'phearun', 27, Gender.MALE);
 let vansao = new Waiter(14, 'vansao', 20, Gender.MALE);
+mengyi.setSalary(700);
+phearun.setSalary(700);
+vansao.setSalary(700);
 
-
-restuarant.hr.addManager(mengyi)
+restuarant.hr.addStaff(mengyi)
 restuarant.hr.addStaff(phearun)
 restuarant.hr.addStaff(vansao)
 
@@ -176,41 +179,51 @@ restuarant.menu.normal.addDrink(whiskey, abc, jinroSoju, coca, milk);
 restuarant.menu.normal.addFood(applePie, BananaDessertRecipe, friedRice, koko, khmerNoodle);
 restuarant.menu.vip.addDrink(whiskeyLate, vanLantos, jinroJuko, cocaTranditional, orangeJucy);
 restuarant.menu.vip.addFood(appleGold, caca, loklak, vonto, horacy);
-
-// console.log(restuarant);
 let table1 = new Table(1,4);
 let table2 = new Table(2,2);
+table1.addCustomer(customer1);
+table2.addCustomer(customer1);
 
-let order1 = new Order(1,customer1,vansao,OrderItemStatus.LISTED);
-let order2 = new Order(2,customer2,vansao,OrderItemStatus.LISTED);
+let order1 = new Order(1,vansao,OrderItemStatus.LISTED);
+let order2 = new Order(2,vansao,OrderItemStatus.LISTED);
 order1.addTable(table1);
 order1.addFood(loklak);
 order1.addDrink(jinroJuko);
 order1.addFood(appleGold);
 order1.getTotalPrice();
-order2.addTable(table1);
-order2.addFood(loklak);
-order2.addDrink(jinroJuko);
+order1.getTable();
+order2.addTable(table2);
+order2.addFood(koko);
+order2.addDrink(coca);
 order2.addFood(appleGold);
 order2.getTotalPrice();
-// console.log(order1);
-// console.log(order2);
 restuarant.order.addOrder(order1);
 restuarant.order.addOrder(order2);
-restuarant.order.customerOrder(customer1);
-restuarant.order.customerOrder(customer2);
-
+console.log("======get staff======");
+console.log(restuarant.hr.getStaff());
 order1.setCook(phearun)
-order2.setStatus(OrderItemStatus.DRAFT)
-// console.log(restuarant.order.getOrders());
+order2.setCook(phearun)
+order2.setStatus(OrderItemStatus.COOKING)
+console.log("======get all order======");
+console.log(restuarant.order.getOrders());
 
 //payment
 let paymentManager = new PaymentManager();
-let pay1 =  new PayByMoney(1,order1);
-let pay2 =  new PayByMoney(2,order2);
+let pay1 =  new PayByMoney(1,order1,500);
+let pay2 =  new PayByMoney(2,order2,1000);
 paymentManager.addPay(pay1)
 paymentManager.addPay(pay2)
-
+console.log("======payment list======");
+console.log(paymentManager.getPay());   
 console.log(paymentManager.isOrderPaid(order1));
 console.log(paymentManager.isOrderPaid(order2));
-console.log(paymentManager.getPay());
+let receipt1 = new Receipt(1,order1,500)
+let receipt2 = new Receipt(2,order2,1000)
+paymentManager.addReceipt(receipt1);
+paymentManager.addReceipt(receipt2);
+receipt1.toPay(pay1);
+console.log("======get receipt======");
+console.log(paymentManager.getReceipt());
+console.log( receipt1.toPay(pay1));
+console.log(receipt2.toPay(pay2));
+console.log("Salary of staff: "+restuarant.hr.getTotalSalaryOfStaff()); 

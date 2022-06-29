@@ -1,4 +1,5 @@
 import { Gender, Person } from "../Person";
+import { Manager } from "./Manager";
 
 export enum StaffCategory {
     WAITER = 'WAITER',
@@ -7,7 +8,7 @@ export enum StaffCategory {
   }
   
 export class Staff extends Person {
-    protected salary: number = 0; //​ by default
+  private salary: number = 0; //​ by default
     constructor(
       protected category: StaffCategory,
       id:number,
@@ -27,5 +28,6 @@ export class Staff extends Person {
     }
     getCategory() {
       return this.category;
-    }
+  }
+
   }
