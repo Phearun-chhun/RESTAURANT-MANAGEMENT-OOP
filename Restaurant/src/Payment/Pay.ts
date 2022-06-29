@@ -1,11 +1,13 @@
 import { Order } from "../OrderManager/order/Order";
 
 export abstract class Pay{
-    recieveMoney: () => number;
-    constructor(protected id: number, protected order:Order){}
+    
+    constructor(protected id: number, protected order:Order,protected moneyToPay :number){}
     getOrders():Order{
         return this.order;
     }
-    
+    recieveMoney(){
+        return this.moneyToPay;
+    };
 
 }

@@ -29,4 +29,5 @@ export class OrderManager {
     getOfflineOrder() {
         return this.offlineOrder;
     }
+    
 }

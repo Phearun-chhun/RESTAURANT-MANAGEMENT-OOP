@@ -1,27 +1,26 @@
 import { Order } from "../OrderManager/order/Order";
 import { Pay } from "./pay";
+import { PayByMoney } from "./PayByMoney";
 
 export class Receipt extends Pay{
-    protected pays :Pay;
-    protected payDate: string;
-    constructor(id:number,  orders :Order){
-        super(id,orders);
+    private pays :Pay;
+    private payDate: string;
+    constructor(id:number,  orders :Order,moneyToPay:number){
+        super(id,orders,moneyToPay);
     }
     getTotalOfOrder(){
         return this.order.getTotalPrice();
     }
     toPay(pays:Pay){
-       if(this.order.getTotalPrice === pays.recieveMoney){
-        this.payDate = new Date().toString()
-        return this.pays = pays;
+       if(this.order.getTotalPrice() == pays.recieveMoney()){
+            this.payDate = new Date().toString()
+            return "You have paid successfully!";
        }
-    //    else if(this.order.getTotalPrice() < pays.recieveMoney()){
-    //         let newPayment = new Pay(this.order.getTotalPrice());
-    //         let changedPayment =  pays.recieveMoney()-this.order.getTotalPrice() ;
-    //         this.pays = newPayment;
-    //         this.payDate = new Date().toString()
-    //         return changedPayment;
-    //     }
+       else if(this.order.getTotalPrice() < pays.recieveMoney()){
+            let changedPayment =  pays.recieveMoney()-this.order.getTotalPrice() ;
+            this.payDate = new Date().toString()
+            return ("Change money: "+changedPayment);
+        }
         else{
             return 'You have no enough money to pay this amount' ;
        }

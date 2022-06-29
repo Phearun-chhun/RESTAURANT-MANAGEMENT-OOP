@@ -32,6 +32,10 @@ export abstract class Order {
         this.foods.push(drink)
     }
 
+    // getCustomer(){
+    //     return this.customer;
+    // }
+
     setCook(chief: Chief){
         this.cook = chief;
         this.status = OrderItemStatus.COOK;
